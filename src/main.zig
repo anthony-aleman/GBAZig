@@ -18,15 +18,12 @@ fn draw_white() !void {
     Mode3.line(201, 45, 201, 73, GBA.toNativeColor(30, 30, 30));
     Mode3.line(71, 45, 102, 59, GBA.toNativeColor(30, 30, 30));
     Mode3.line(71, 73, 102, 59, GBA.toNativeColor(30, 30, 30));
-    
 }
 
 fn draw_blk() !void {
     Mode3.line(4, 15, 200, 15, GBA.toNativeColor(1, 1, 1));
     Mode3.line(201, 15, 201, 45, GBA.toNativeColor(1, 2, 2));
-
 }
-
 
 fn draw_red() !void {
     Mode3.line(5, 15, 100, 60, 15);
@@ -41,7 +38,7 @@ fn draw_shapes() void {
     try draw_blk();
     //White
     try draw_white();
-  
+
     //green
     try draw_green();
 }
@@ -49,14 +46,10 @@ fn draw_shapes() void {
 pub fn main() !void {
     LCD.setupDisplayControl(.{
         .mode = .Mode3,
-        .backgroundLayer2 =.Show,
+        .backgroundLayer2 = .Show,
     });
 
     draw_shapes();
- 
-    
+
     while (true) {}
-
 }
-
-

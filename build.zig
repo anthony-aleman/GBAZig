@@ -3,7 +3,7 @@ const GBABuilder = @import("GBA/builder.zig");
 
 pub fn build(b: *std.Build) void {
     _ = GBABuilder.addGBAExecutable(b, "HELLOWORLD", "src/main.zig");
-    
+
     // Mode 4 Flip
     //const mode4flip = GBABuilder.addGBAExecutable(b, "mode4flip", "examples/mode4flip/mode4flip.zig");
     //GBABuilder.convertMode4Images(mode4flip, &[_]GBABuilder.ImageSourceTarget{
