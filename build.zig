@@ -2,8 +2,15 @@ const std = @import("std");
 const GBABuilder = @import("GBA/builder.zig");
 
 pub fn build(b: *std.Build) void {
-    _ = GBABuilder.addGBAExecutable(b, "HELLOWORLD", "src/main.zig");
+    const exe = GBABuilder.addGBAExecutable(b, "HELLOWORLD", "src/main.zig");
+    const install_docs = b.addInstallDirectory(.{
+        .source_dir = exe.getEmittedDocs(),
+        .install_dir = .prefix,
+        .install_subdir = "docs",
+    });
 
+    const docs_step = b.step("docs", "Copy documentation articfacts to prefix path");
+    docs_step.dependOn(&install_docs.step);
     // Mode 4 Flip
     //const mode4flip = GBABuilder.addGBAExecutable(b, "mode4flip", "examples/mode4flip/mode4flip.zig");
     //GBABuilder.convertMode4Images(mode4flip, &[_]GBABuilder.ImageSourceTarget{
